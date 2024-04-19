@@ -34,6 +34,7 @@ button {
   cursor: pointer;
   padding: 7px 20px;
   border-radius: 16px;
+  font-size: 16px;
   transition: all 0.3s;
 }
 button:hover {
@@ -281,6 +282,149 @@ footer .bottom {
   position: absolute;
   top: -50px;
 }
+/* Projeler Alanı */
+#projects-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+#projects-sec .project {
+  display: flex;
+  gap: 30px;
+}
+.project-image {
+  display: flex;
+  align-items: end;
+  background: #323443;
+  position: relative;
+  padding: 40px 60px 1px;
+}
+.project-image:hover {
+  background: linear-gradient(45deg, #9ab2f6 0%, #44e0db 52%, #49f3aa 90%);
+  cursor: pointer;
+}
+.project-image .icon {
+  background: #414141;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  display: grid;
+  place-items: center;
+}
+.project-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  gap: 50px;
+}
+
+/*! Takım Sayfası  */
+#count-sec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+.count-sec-left {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.count-sec-left .counter {
+  padding: 20px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+  border: 1px solid rgba(255, 255, 255, 0.33);
+}
+.counter .boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  margin-top: 20px;
+}
+.boxes .box {
+  background: #000115;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+.count-sec-left .buttons {
+  display: flex;
+  gap: 20px;
+}
+.count-sec-left .buttons button {
+  background: transparent;
+  color: white;
+  border: 1px solid #55903e;
+}
+.count-sec-left .buttons button:hover {
+  background: #30a900;
+}
+.count-sec-right img {
+  border-radius: 10px;
+}
+/* resimler alanı */
+#images-sec {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.img-wrapper {
+  position: relative;
+}
+.img-wrapper img {
+  width: 400px;
+  border-radius: 20px;
+}
+.img-wrapper h1 {
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+  border: 1px solid rgba(255, 255, 255, 0.33);
+}
+/* bağış alanı */
+#donate-sec {
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.donate-sec-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.donate-sec-content {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  justify-content: center;
+  gap: 40px;
+}
+.donate-sec-people {
+  display: flex;
+  color: white;
+  background: #640863;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 60px;
+}
+.donate-sec-people img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 /* 
 *
 *
@@ -324,6 +468,12 @@ footer .bottom {
 /*! Responsive Yapılar */
 /* max-width:ekran boyutu 1500px altındayken çalışır */
 @media (max-width: 1500px) {
+  #images-sec {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+  }
 }
 @media (max-width: 1200px) {
   #window-sec {
@@ -333,8 +483,30 @@ footer .bottom {
   .windows .window {
     height: 300px;
   }
+
+  #what-sec {
+    flex-direction: column;
+    gap: 80px;
+  }
+  #what-sec .info {
+    gap: 20px;
+    max-width: unset;
+  }
+
+  #projects-sec .project {
+    flex-direction: column;
+  }
+  #projects-sec .project-image {
+    justify-content: center;
+    padding: 20px 100px 0;
+  }
 }
 @media (max-width: 1000px) {
+  .welcome {
+    padding: 100px 20px;
+    font-size: 40px;
+  }
+
   /* footer alanı */
   footer .links {
     grid-template-columns: 1fr 1fr;
@@ -358,6 +530,9 @@ footer .bottom {
   }
   .card {
     max-width: 400px;
+  }
+  .donate-sec-content {
+    grid-template-columns: repeat(3, 200px);
   }
 }
 @media (max-width: 800px) {
@@ -387,6 +562,29 @@ footer .bottom {
   .info p {
     /* Bu stile hiç değer ataması yapılmamış gibi davranır */
     max-width: unset;
+  }
+  /*! Takım Sayfası  */
+  #count-sec {
+    flex-direction: column-reverse;
+  }
+  #count-sec .buttons {
+    justify-content: space-between;
+  }
+  .donate-sec-content {
+    grid-template-columns: repeat(2, 200px);
+  }
+  .toggle {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    background: #323443;
+    right: 5px;
+    top: 75px;
+    padding: 20px;
+    border-radius: 15px;
+  }
+  .toggle a:hover {
+    color: #30a900;
   }
 }
 @media (max-width: 700px) {
