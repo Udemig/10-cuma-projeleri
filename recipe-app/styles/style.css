@@ -1,0 +1,254 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=Edu+SA+Beginner:wght@400..700&family=Pacifico&display=swap");
+header {
+  display: grid;
+  grid-template-areas: "logo right right";
+  padding: 40px;
+  background: rgba(190, 190, 190, 0.5);
+  border-radius: 15px;
+}
+header .logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+  margin-left: 150px;
+  transition: all 0.3s;
+}
+header .logo:hover {
+  scale: 1.02;
+  cursor: pointer;
+}
+header .logo img {
+  height: 100px;
+}
+header .logo a {
+  font-family: "Pacifico", cursive;
+}
+header .right {
+  grid-area: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-right: 150px;
+}
+header .right .search_form form {
+  background: white;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  border-radius: 40px;
+  transition: 0.3s;
+  /* form yapısına odaklandığında çalışır */
+}
+header .right .search_form form:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+header .right .search_form form input {
+  border: none;
+  outline: none;
+  width: 300px;
+  text-indent: 8px;
+}
+header .right .search_form form input::-moz-placeholder {
+  color: #8f6600;
+}
+header .right .search_form form input::placeholder {
+  color: #8f6600;
+}
+header .right .search_form form button {
+  padding: 10px 30px;
+  background-color: #fab604;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: "Edu SA Beginner", cursive;
+  transition: all 0.3s;
+}
+header .right .search_form form button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.27);
+}
+header .right .likes {
+  font-size: 25px;
+  background: #fab604;
+  padding: 7px;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+}
+header .right .list {
+  position: absolute;
+  top: 50px;
+  right: -300px;
+  background-image: linear-gradient(90deg, #fab604 0%, #ce9400 100%);
+  margin-right: 150px;
+  border-radius: 20px;
+}
+header .right .list a {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-bottom: 1px solid black;
+}
+header .right .list a img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+header .right .list a p {
+  white-space: nowrap;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.results {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+}
+.results .result-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #e2ae40;
+  padding: 5px 10px;
+  border-radius: 15px;
+  width: 100%;
+  transition: all 0.3s;
+}
+@media (max-width: 550px) {
+  .results .result-link {
+    width: 350px;
+  }
+}
+.results .result-link:hover {
+  background-color: #fab604;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+.results .result-link img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+@media (max-width: 550px) {
+  .results .result-link img {
+    width: 30px;
+    height: 30px;
+  }
+}
+.results .result-link .data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+@media (max-width: 550px) {
+  .results .result-link .data {
+    font-size: 13px;
+  }
+}
+.results .result-link .data h4 {
+  font-family: "Borel", cursive;
+  color: #8b5d00;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+  transition: all 0.3s;
+}
+.results .result-link .data h4:hover {
+  color: rgb(85, 45, 0);
+}
+.results .result-link .data p {
+  font-family: "Pacifico", cursive;
+  white-space: nowrap;
+}
+
+.recipe {
+  background-color: rgba(190, 190, 190, 0.5);
+}
+.recipe figure {
+  height: 300px;
+  position: relative;
+}
+.recipe figure::before {
+  content: "";
+  background-image: linear-gradient(90deg, #fab604 0%, #8e6600);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+.recipe figure img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.recipe figure h1 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-image: linear-gradient(90deg, #feba18 0%, #fb9919 50%, #f76e1c 100%);
+  white-space: nowrap;
+  padding: 8px 30px;
+  transform: translate(-50%, 20%) skewY(-6deg);
+  text-shadow: 0 0 10px rgb(202, 202, 202);
+  font-family: "Pacifico", cursive;
+  border-radius: 3px;
+  letter-spacing: 3px;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("./../images/food-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  background: rgba(226, 226, 226, 0.5);
+  max-width: 1440px;
+  min-height: 70vh;
+  margin: 4vw auto;
+  box-shadow: 0 0 50px rgba(104, 67, 0, 0.45);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100%;
+}/*# sourceMappingURL=style.css.map */

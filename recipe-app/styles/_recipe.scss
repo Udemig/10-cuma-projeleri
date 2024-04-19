@@ -1,0 +1,45 @@
+.recipe {
+  background-color: rgba(190, 190, 190, 0.5);
+  figure {
+    height: 300px;
+    position: relative;
+
+    &::before {
+      content: "";
+      background-image: linear-gradient(90deg, #fab604 0%, #8e6600);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    h1 {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      background-image: linear-gradient(
+        90deg,
+        #feba18 0%,
+        #fb9919 50%,
+        #f76e1c 100%
+      );
+      white-space: nowrap;
+      padding: 8px 30px;
+      transform: translate(-50%, 20%) skewY(-6deg);
+      text-shadow: 0 0 10px rgb(202, 202, 202);
+      font-family: "Pacifico", cursive;
+      border-radius: 3px;
+      letter-spacing: 3px;
+      max-width: 400px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
+  }
+}
