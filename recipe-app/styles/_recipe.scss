@@ -41,5 +41,107 @@
       text-overflow: ellipsis;
       font-weight: 600;
     }
+    .like-area {
+      display: flex;
+      justify-content: end;
+      padding: 20px;
+      i {
+        color: #c94900;
+        font-size: 25px;
+        border-radius: 10px;
+        padding: 5px;
+        transition: all 0.3s;
+        &:hover {
+          background: #a73d01;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .ingredients {
+    display: flex;
+    flex-direction: column;
+    @include pc-middle {
+      align-items: center;
+      padding: 20px;
+    }
+    padding: 40px;
+    margin-top: 35px;
+    width: 100%;
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
+      gap: 20px;
+      li {
+        display: flex;
+        gap: 10px;
+        i {
+          color: #a0542d;
+        }
+        p {
+          white-space: nowrap;
+          max-width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      margin: 50px auto;
+      width: 100%;
+      font-size: 20px;
+      gap: 10px;
+      cursor: pointer;
+      background-color: #f76e1c;
+      border: none;
+      outline: none;
+      transition: all 0.3s;
+      &:hover {
+        scale: 0.96;
+      }
+      span {
+        font-family: "Edu SA Beginner", cursive;
+        font-weight: 900;
+        letter-spacing: 2px;
+      }
+    }
+  }
+  .directions {
+    text-align: center;
+    padding-bottom: 40px;
+    h2 {
+      font-weight: 600;
+      font-family: "Pacifico", cursive;
+      color: #a73d01;
+      text-shadow: 0 0 10px #f76e1c;
+      font-size: 27px;
+      transform: skewY(-3deg);
+      letter-spacing: 3px;
+    }
+    p {
+      padding: 50px;
+      font-weight: 400;
+      span {
+        color: #cb4a00;
+      }
+    }
+    a {
+      border: 1px solid #f76e1c;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s;
+      &:hover {
+        background: #f76e1c;
+      }
+    }
   }
 }
