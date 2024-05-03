@@ -29,3 +29,19 @@ export const renderLoader = (parent) => {
   // loaderı bize gelen html elemanının içerisine gönderme
   parent.insertAdjacentHTML("afterbegin", loader);
 };
+
+export const renderBasketItems = (items) => {
+  const markup = items
+    .map(
+      (item) =>
+        `
+    <li data-id=${item.id}>
+      <i class="bi bi-x" id="delete-item"></i>
+      <span>${item.title.description}</span>
+    </li>
+  
+  `
+    )
+    .join("");
+  elements.basketList.innerHTML = markup;
+};

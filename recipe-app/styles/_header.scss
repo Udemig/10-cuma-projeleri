@@ -105,20 +105,25 @@ header {
       padding: 7px;
       position: relative;
       border-radius: 8px;
-
+      transition: all 1s;
       &:hover > .list {
         visibility: visible;
+        opacity: 1;
       }
       cursor: pointer;
       .list {
         visibility: hidden;
         position: absolute;
         top: 50px;
+        opacity: 0;
+
         right: -300px;
         background-image: linear-gradient(90deg, #fab604 0%, #ce9400 100%);
         margin-right: 150px;
         border-radius: 20px;
         z-index: 10000;
+        padding: 10px;
+        transition: all 0.4s;
         @include ipad {
           right: -170px;
         }
