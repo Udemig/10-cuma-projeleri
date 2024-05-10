@@ -1,0 +1,357 @@
+// Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+// İmports
+@import "modules";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--nav-background);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+section {
+  display: flex;
+  gap: 20px;
+}
+
+// Header
+header {
+  @extend .flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+  font-size: 21px;
+  // sol kısım
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .hamburger-menu {
+      padding: 5px;
+      font-size: var(--icons-size);
+      @extend .icon;
+    }
+    img,
+    span {
+      cursor: pointer;
+    }
+  }
+  // orta kısım
+  .middle {
+    width: 100%;
+    form {
+      @extend .flex;
+      justify-content: space-between;
+      background-color: var(--search-input);
+      padding: 6px 10px;
+      gap: 10px;
+      border-radius: 30px;
+      max-width: 580px;
+      .search {
+        @extend .flex;
+        gap: 10px;
+        i {
+          @extend .icon;
+        }
+      }
+      .settings {
+        @extend .icon;
+      }
+      input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 18px;
+        width: 450px;
+      }
+    }
+  }
+  // sağ kısım
+  .right {
+    @extend .flex;
+    justify-content: space-between;
+    gap: 10px;
+    i {
+      @extend .icon;
+    }
+    img {
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      @extend .icon;
+    }
+  }
+}
+// Sol Menu Alanı
+nav {
+  display: flex;
+  flex-direction: column;
+  padding: 13px;
+  gap: 25px;
+  // oluştur kısımı
+  .create {
+    background-color: var(--create-color);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 2px 2px 10px gray;
+    }
+  }
+  // orta kısım
+  .nav-middle {
+    display: grid;
+    font-size: 16px;
+    .active {
+      background-color: var(--active-color);
+      border-radius: 0px 20px 20px 0px;
+    }
+    a {
+      padding: 7px 12px 7px 26px;
+      cursor: pointer;
+      display: flex;
+      gap: 12px;
+    }
+    i span {
+      pointer-events: none;
+    }
+  }
+  // alt kısım
+  .nav-bottom {
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+// Main alanı
+main {
+  background-color: #fff;
+  border-radius: 8px;
+  flex-grow: 1; // Bu özellik ile main alanının kapsayacağı en büyük alanı elde etmesini sağladık.
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      display: flex;
+      gap: 8px;
+      i {
+        @extend .icon;
+        width: 25px;
+        height: 25px;
+      }
+      .checkbox {
+        @extend .flex;
+        padding-left: 10px;
+        gap: 3px;
+        input {
+          @extend .flex;
+          border-radius: 0;
+          width: 15px;
+          height: 20px;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      .passive {
+        color: rgb(174, 174, 174);
+      }
+      i {
+        @extend .icon;
+        width: 25px;
+        height: 25px;
+      }
+      .keyboard {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding-right: 10px;
+        padding-left: 5px;
+        i {
+          border-radius: 0;
+          margin-top: 2px;
+          width: 15px;
+          height: 20px;
+          padding: 4px;
+        }
+      }
+    }
+  }
+  .mails-area {
+    height: 80vh;
+  }
+  .mail {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 10px;
+    font-size: 16px;
+    background-color: var(--box-color);
+    border-bottom: 1px solid rgb(218, 218, 218);
+    padding: 10px;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 0 0 10px rgb(211, 211, 211);
+    }
+    .left {
+      @extend .flex;
+      justify-content: start;
+      gap: 5px;
+      span {
+        @extend .icon;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .right {
+      @extend .flex;
+      justify-content: space-between;
+      font-size: 17px;
+      .message-title {
+        font-weight: bold;
+        white-space: nowrap;
+      }
+      .message-description {
+        margin-left: 14px;
+        width: 100%;
+      }
+      .message-date {
+        font-size: 15px;
+        white-space: nowrap;
+        width: 100px;
+      }
+      .delete {
+        background: none;
+        border: none;
+        outline: none;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+        cursor: pointer;
+        border-radius: 50%;
+        display: none;
+        i {
+          margin-right: 20px;
+        }
+      }
+    }
+    &:hover > .right .message-date {
+      display: none;
+    }
+    &:hover > .right .delete {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+// Aside alanı
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5px;
+  img {
+    width: 28px;
+    height: 28px;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+  span {
+    background-color: gray;
+    width: 100%;
+    height: 2px;
+  }
+}
+// Modal Alanı
+
+.modal-wrapper {
+  position: fixed;
+  background-color: rgba(128, 128, 128, 0.2);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: none;
+  place-items: center;
+  .modal-inner {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 80%;
+    border-radius: 10px;
+    padding: 40px;
+    position: relative;
+    #close-btn {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      label {
+        margin-top: 40px;
+      }
+      input,
+      textarea {
+        border: 1px solid gray;
+        border-radius: 4px;
+        margin-top: 10px;
+        padding: 8px;
+        outline: none;
+      }
+      textarea {
+        width: 100%;
+        min-height: 100px;
+        max-height: 150px;
+        resize: vertical; // bu özellik ile textarea'nın sadece dikey noktada genişlemesine izin verdik
+      }
+      #send-mail-btn {
+        background-color: var(--create-color);
+        border: none;
+        padding: 15px 30px;
+        font-size: 17px;
+        cursor: pointer;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 20px;
+        left: 40px;
+        transition: all 0.3s;
+        &:hover {
+          box-shadow: 0 0 10px gray;
+        }
+      }
+    }
+  }
+}
+
+// Ekstra Class Yapıları
+
+.hide {
+  .create span,
+  .nav-middle a span,
+  .nav-bottom span {
+    display: none;
+  }
+}

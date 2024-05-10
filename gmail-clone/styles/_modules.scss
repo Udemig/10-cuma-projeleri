@@ -1,0 +1,36 @@
+// Tanımlamalar
+:root {
+  //! Colors
+  --main-background: #f6f8fc;
+  --hover-effect: #eaebef;
+  --search-input: #eaf1fb;
+  --search-input-click: #ffffff;
+  --nav-background: #f6f8fc;
+  --create-color: #c2e7ff;
+  --left-clik: #d3e3fd;
+  --mails-background: #ffffff;
+  --box-color: #f2f6fc;
+  --active-color: #d3e3fd;
+  //! Fonts
+  --icon-size: 24px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-sizing: content-box;
+  &:hover {
+    background-color: var(--hover-effect);
+  }
+}
