@@ -1,6 +1,6 @@
 // console.log("Bağlantı kontrolü");
-import { showModal, renderMails } from "./ui.js";
-import { months } from "./contants.js";
+import { showModal, renderMails, renderCategories } from "./ui.js";
+import { months, categories } from "./contants.js";
 //! Html'den Gelen Elemmanlar
 const body = document.querySelector("body");
 const btn = document.getElementById("toggle");
@@ -20,6 +20,11 @@ const categoryArea = document.querySelector(".nav-middle");
 document.addEventListener("DOMContentLoaded", () => {
   renderMails(mailsArea, mailData);
 });
+
+mailsArea.addEventListener("click", updateMails);
+
+// Kategory İzleme
+categoryArea.addEventListener("click", watchCategory);
 
 // localden veri alma
 const strMailData = localStorage.getItem("data");
@@ -110,7 +115,7 @@ function sendMail(e) {
     receiver,
     title,
     message,
-    // stared,
+    stared: false,
     date: getDate(),
   };
   // Diziye mail eklendi
@@ -147,8 +152,65 @@ function sendMail(e) {
 }
 
 // Toggle Yapısı
-
 btn.addEventListener("click", () => {
   btn.classList.toggle("active");
   btn.classList.toggle("darkMode");
 });
+
+// Kategorileri izleyip ekrana basacak fonk.
+function watchCategory(e) {
+  const leftNav = e.target.parentElement;
+  const selectedCategory = leftNav.dataset.name;
+
+  renderCategories(categoryArea, categories, selectedCategory);
+
+  if (selectedCategory === "Yıldızlananlar") {
+    console.log("Yıldız");
+    const filtred = mailData.filter((i) => i.stared === true);
+    renderMails(mailsArea, filtred);
+    return;
+  }
+
+  // yıldızlı değilsede
+  renderMails(mailsArea, mailData);
+}
+
+// Mail alanında tıklanma olunca maili güncelleyen fonk.
+
+function updateMails(e) {
+  if (e.target.classList.contains("bi-trash")) {
+    // console.log("Çöp kutusu");
+    // Silinecek elemanı belirle
+    const mail = e.target.parentElement.parentElement.parentElement;
+    // id değerine göre eleman seç
+    const mailId = mail.dataset.id;
+    // id'si bilinen yapıyı diziden çıkar
+    const filtredData = mailData.filter((i) => i.id != mailId);
+    // console.log(filtredData);
+    // Bu elemanı storage a hazırla
+    const strData = JSON.stringify(filtredData);
+    // Storage'dan veriyi kaldır
+    localStorage.removeItem("data");
+    // Güncel hali storage a  kaydet
+    localStorage.setItem("data", strData);
+
+    // Bu noktaya kadar veriyi storage'dan kaldırdık.Fakat değişiklik sayfa tekrardan render edilince yansıyor.Bundan dolayı elemanı domdan kaldırmamız gerek.
+    mail.remove();
+  } else if (
+    e.target.classList.contains("bi-star") ||
+    e.target.classList.contains("bi-star-fill")
+  ) {
+    const mail = e.target.parentElement.parentElement.parentElement;
+
+    const mailId = mail.dataset.id;
+
+    const foundItem = mailData.find((i) => i.id == mailId);
+
+    const updatedItem = { ...foundItem, stared: !foundItem.stared };
+    const index = mailData.findIndex((i) => i.id == mailId);
+    mailData[index] = updatedItem;
+
+    localStorage.setItem("data", JSON.stringify(mailData));
+    renderMails(mailsArea, mailData);
+  }
+}

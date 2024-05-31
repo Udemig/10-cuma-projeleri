@@ -24,7 +24,7 @@ export function renderMails(outlet, data) {
   <div class="mail" id="mail" data-id=${mail.id} >
    <div class="left">
    <input type="checkbox" />
-    <span><i class="bi bi-star"></i></span>
+    <span><i class="bi bi-star${mail.stared ? "-fill" : ""} "></i></span>
     <span>${mail.receiver} </span>
      </div>
     <div class="right">
@@ -40,3 +40,25 @@ export function renderMails(outlet, data) {
     )
     .join(" ");
 }
+
+export const renderCategories = (outlet, data, selectedCategory) => {
+  // eski kategorileri sil
+  outlet.innerHTML = "";
+
+  // diziyi dönecek
+  data.forEach((category) => {
+    const categoryItem = document.createElement("a");
+    // elemena ekleme ve özelleştirme
+    categoryItem.dataset.name = category.title;
+    categoryItem.className = selectedCategory === category.title && "active";
+
+    categoryItem.innerHTML = `
+    <i class='${category.className} ' ></i>
+    <span>${category.title} </span>
+    
+    
+    `;
+    // DOM'a elemanı ekleme
+    outlet.appendChild(categoryItem);
+  });
+};
