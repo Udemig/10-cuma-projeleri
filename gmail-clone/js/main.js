@@ -155,6 +155,7 @@ function sendMail(e) {
 btn.addEventListener("click", () => {
   btn.classList.toggle("active");
   btn.classList.toggle("darkMode");
+  body.classList.toggle("darkMode");
 });
 
 // Kategorileri izleyip ekrana basacak fonk.
