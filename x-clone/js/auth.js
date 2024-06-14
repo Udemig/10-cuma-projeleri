@@ -1,4 +1,7 @@
+import { setLocal } from "./helpers.js";
 import { authEle } from "./ui.js";
+import { API } from "./api.js";
+const api = new API();
 
 // Regex:
 // Enaz 6 karakter,1 küçük harf,1 büyük harf birde sayı
@@ -20,7 +23,7 @@ const renderWarns = (nameWarning, passWarning) => {
   }
 };
 
-authEle.loginForm.addEventListener("submit", (e) => {
+authEle.loginForm.addEventListener("submit", async (e) => {
   // Sayfa yenilemesi  kapatma
   e.preventDefault();
   // input verilerine erişme
@@ -53,4 +56,15 @@ authEle.loginForm.addEventListener("submit", (e) => {
   }
 
   renderWarns(nameWarning, passWarning);
+  // isim ve kullanıcı hatası yoksa
+  if (!nameWarning && !passWarning) {
+    // api a istek at
+    const userData = await api.getUser(name);
+    // locale kullanıcı ekle
+    setLocal("user", userData);
+    // console.log(userData);
+
+    // Son olarak ana sayfaya yönlendirme. Window içerisindeki location ile konum belirlendi
+    window.location = "/";
+  }
 });
