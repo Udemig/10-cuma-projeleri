@@ -12,7 +12,6 @@ export class API {
   constructor() {}
 
   // Kullanıcı verisi alma
-
   async getUser(username) {
     try {
       const res = await fetch(
@@ -27,18 +26,4 @@ export class API {
   }
 
   // Diğer Api İstekleri
-
-  async fetchData(endpoint, paramName, paramValue) {
-    try {
-      const res = await fetch(
-        `${baseUrl}${endpoint}?${paramName}=${paramValue} `,
-        options
-      );
-      const data = await res.json();
-      console.log(data);
-      return data;
-    } catch (err) {
-      console.log("Hata:", err);
-    }
-  }
 }
