@@ -59,7 +59,7 @@ authEle.loginForm.addEventListener("submit", async (e) => {
   // isim ve kullanıcı hatası yoksa
   if (!nameWarning && !passWarning) {
     // api a istek at
-    const userData = await api.getUser(name);
+    const userData = await api.getuser(name);
     // locale kullanıcı ekle
     setLocal("user", userData);
     // console.log(userData);
